@@ -8,24 +8,24 @@ public:
 	App();
 	bool update() override;
 private:
-	// Input Listener
+	// input listener
 	void on_keyboard(const clan::InputEvent &key);
 	void on_mouse(const clan::InputEvent &key);
 
-	// Game Funktionen
+	// game methods
 	void init(void);
 	void render(void);
 	void compute(void);
 
-	// HilfsFunktionen
+	// helper methods
 	inline void compute_pattern(int x, int y, int board_in, int board_out);
 	void init_pattern();
-	int irand(int a, int b);	//Zufallswertfunktion
+	int irand(int a, int b);
 
 	bool quit = false;
 	bool show_fps = false;
 	bool _pause;
-	int _currentStep;	//Generation
+	int _currentStep;
 
 	unsigned char _sand[2][SAND_HEIGHT][SAND_WIDTH];
 	int _board;

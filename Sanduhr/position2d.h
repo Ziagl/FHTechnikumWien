@@ -3,10 +3,10 @@
 #include <math.h>
 #define PI (3.141592653589793)
 
-//Klasse für die Position auf einer 2D Karte
+// position on a 2D map
 class Position2D {
 public:
-	int _x, _y; //Koordinaten
+	int _x, _y; // coordinates
 
 	Position2D() { _x = 0; _y = 0; };
 	Position2D(int x, int y) { _x = x; _y = y; }
@@ -30,15 +30,15 @@ public:
 
 	double getLength()
 	{
-		//Performancesteigerung --> Wurzel weglassen
+		// performance optimization --> remove square root
 		return /*sqrt(*/static_cast<double>(_x*_x + _y * _y)/*)*/;
 	}
 
-	//Addieren
+	// addition and subtraction
 	Position2D operator+(Position2D &other) { return Position2D(_x + other._x, _y + other._y); }
 	Position2D operator-(Position2D &other) { return Position2D(_x - other._x, (-_y) - (-other._y)); }
 
-	//Vergleichsoperatoren
+	// compare operators
 	bool operator==(Position2D &p) { return((p._x == _x) && (p._y == _y)); }
 	bool operator!=(Position2D &p) { return !operator==(p); }
 };

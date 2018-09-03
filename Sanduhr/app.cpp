@@ -24,13 +24,13 @@ App::App()
 	canvas = clan::Canvas(window);
 	font = clan::Font("Courir", 35);
 
-	// Connect the Window close event
+	// connect the window close event
 	sc.connect(window.sig_window_close(), [&]() {quit = true; });
 
-	// Connect a keyboard handler to on_key_up()
+	// connect a keyboard handler to on_key_up()
 	sc.connect(window.get_keyboard().sig_key_up(), clan::bind_member(this, &App::on_keyboard));
 
-	// Connect a mouse handler
+	// connect a mouse handler (only for example it is not used)
 	sc.connect(window.get_mouse().sig_key_down(), this, &App::on_mouse);
 	sc.connect(window.get_mouse().sig_key_dblclk(), this, &App::on_mouse);
 
@@ -45,7 +45,7 @@ bool App::update()
 	if (!_pause)
 		compute();
 	
-	// Clear the display in a dark blue nuance
+	// clear display in a dark blue nuance
 	canvas.clear(clan::Colorf(0.0f, 0.0f, 0.2f));
 	
 	render();
@@ -71,11 +71,11 @@ void App::on_keyboard(const clan::InputEvent &key)
 
 // mouse key was pressed
 void App::on_mouse(const clan::InputEvent &key) {
-	// Mausposition
+	// mouse position
 	const float x = key.mouse_pos.x;
 	const float y = key.mouse_pos.y;
 
-	// Mausaktion
+	// mouse action
 	switch (key.id)
 	{
 		case mouse_left:
@@ -88,7 +88,7 @@ void App::on_mouse(const clan::InputEvent &key) {
 			break;
 		case mouse_wheel_down:
 			break;
-		//ix
+		//nothing
 	}
 }
 
@@ -99,8 +99,8 @@ void App::init(void)
 	_currentStep = 0;
 	_board = 0;
 	_nextboard = 1;
-	srand(static_cast<int>(time(0)));			//Zufallsgenerator initialisieren
-	init_pattern();								//Muster initialisieren
+	srand(static_cast<int>(time(0)));			// initialize random number generator
+	init_pattern();								// initialize pattern
 	_time = 0;
 	_lasttime = 0;
 	_mode = 0;
@@ -119,16 +119,15 @@ void App::init(void)
 	{
 		for (int j = 0; j<SAND_WIDTH; ++j)
 		{
-			//Glas
+			// glas
 			if (j == k || j == (SAND_WIDTH - 1) - k)
 				_sand[_board][i][j] = GLASS;
 			else
 			{
-				//obere Hälfte
+				// upper half
 				if (i<SAND_HEIGHT / 2)
 				{
-					//kein Glas
-					//außerhalb --> leer
+					// not in glas --> empty
 					if (j<k || j>(SAND_WIDTH - 1) - k)
 						_sand[_board][i][j] = EMPTY;
 					else
@@ -150,11 +149,11 @@ void App::init(void)
 		}
 	}
 
-	//2. Board Initialisieren (damit die Ränder vom Glas auch passen)
+	// initialize board
 	for (int i = 0; i<SAND_HEIGHT; ++i)
 		for (int j = 0; j<SAND_WIDTH; ++j)
 			_sand[_nextboard][i][j] = _sand[_board][i][j];
-}
+} // init()
 
 void App::render(void) {
 
@@ -162,26 +161,23 @@ void App::render(void) {
 		for (int j = 0; j<SAND_WIDTH; ++j)
 		{
 			clan::Colorf color;
-			//Optimierung: Schwarze Pixel werden nicht gezeichnet == Hintergrund
+			// draws yellow sand and blue glas
+			// optimization: do not draw black (empty) pixels
 			switch (_sand[_board][i][j])
 			{
-			case EMPTY: break;
-			case SAND:
-				color = clan::Colorf::yellow;
-				//CL_Draw::fill(m_gc, (float)j, (float)i, (float)j + 1, (float)i + 1, color);
-				canvas.fill_rect(clan::Rectf((float)j, (float)i, (float)j + 1, (float)i + 1), color);
-				//CL_Draw::point(m_gc, (float)j, (float)i, color); 
-				break;
-			case GLASS:
-				color = clan::Colorf::blue;
-				//CL_Draw::fill(m_gc, (float)j, (float)i, (float)j + 1, (float)i + 1, color);
-				canvas.fill_rect(clan::Rectf((float)j, (float)i, (float)j + 1, (float)i + 1), color);
-				//CL_Draw::point(m_gc, (float)j, (float)i, color); 
-				break;
+				case EMPTY: break;
+				case SAND:
+					color = clan::Colorf::yellow;
+					canvas.fill_rect(clan::Rectf((float)j, (float)i, (float)j + 1, (float)i + 1), color);
+					break;
+				case GLASS:
+					color = clan::Colorf::blue;
+					canvas.fill_rect(clan::Rectf((float)j, (float)i, (float)j + 1, (float)i + 1), color);
+					break;
 			}
 		}
 
-	//Gibt die verlaufene Zeit aus
+	// prints time
 	std::stringstream str;
 
 	char timebuf[32];
@@ -195,6 +191,7 @@ void App::render(void) {
 	clan::Sizef text_size = font.measure_text(canvas, text).bbox_size;
 	font.draw_text(canvas, 150.0f, 150.0f, text, clan::Colorf::yellow);
 
+	// prints frames per second
 	if (show_fps) {
 		std::string fps = clan::string_format("%1 fps", (int)game_time.get_updates_per_second());
 		font.draw_text(canvas, 150.0f, 180.0f, fps, clan::Colorf::red);
@@ -203,50 +200,50 @@ void App::render(void) {
 
 void App::compute()
 {
-	//Unterschiedliche Quadrate werden als Pattern genommen (damit Sandkörner nicht irgendwo im Eck liegen bleiben)
+	// run different modes, otherwise sand pixel on border won't move
 	switch (_mode)
 	{
-	case 0:
-		for (int i = 1; i<SAND_HEIGHT - 1; i += 2)
-			for (int j = 1; j<SAND_WIDTH - 1; j += 2)
-				compute_pattern(i, j, _board, _nextboard);
-		break;
-	case 1:
-		for (int i = 0; i<SAND_HEIGHT; i += 2)
-			for (int j = 0; j<SAND_WIDTH; j += 2)
-				compute_pattern(i, j, _board, _nextboard);
-		break;
-	case 2:
-		for (int i = 1; i<SAND_HEIGHT - 1; i += 2)
-			for (int j = 0; j<SAND_WIDTH; j += 2)
-				compute_pattern(i, j, _board, _nextboard);
-		break;
-	case 3:
-		for (int i = 0; i<SAND_HEIGHT; i += 2)
-			for (int j = 1; j<SAND_WIDTH - 1; j += 2)
-				compute_pattern(i, j, _board, _nextboard);
-		break;
+		case 0:
+			for (int i = 1; i<SAND_HEIGHT - 1; i += 2)
+				for (int j = 1; j<SAND_WIDTH - 1; j += 2)
+					compute_pattern(i, j, _board, _nextboard);
+			break;
+		case 1:
+			for (int i = 0; i<SAND_HEIGHT; i += 2)
+				for (int j = 0; j<SAND_WIDTH; j += 2)
+					compute_pattern(i, j, _board, _nextboard);
+			break;
+		case 2:
+			for (int i = 1; i<SAND_HEIGHT - 1; i += 2)
+				for (int j = 0; j<SAND_WIDTH; j += 2)
+					compute_pattern(i, j, _board, _nextboard);
+			break;
+		case 3:
+			for (int i = 0; i<SAND_HEIGHT; i += 2)
+				for (int j = 1; j<SAND_WIDTH - 1; j += 2)
+					compute_pattern(i, j, _board, _nextboard);
+			break;
 	}
 
 	_mode++;
 	if (_mode == 4)
 		_mode = 0;
 
-	//die Boards vertauschen
+	// change boards
 	_board = _nextboard;
 	if (_nextboard == 1)
 		_nextboard = 0;
 	else
 		_nextboard = 1;
 
-	//Generationenzähler
+	// generation counter
 	_currentStep++;
 
-	//Zeit aktualisieren
+	// update time
 	float t = game_time.get_current_time();
 	_time += t - _lasttime;
 	_lasttime = t;
-}
+} // compute()
 
 inline void App::compute_pattern(int x, int y, int board_in, int board_out)
 {
@@ -266,7 +263,7 @@ inline void App::compute_pattern(int x, int y, int board_in, int board_out)
 		int r = irand(MIN, MAX);
 
 		if (r<PROP1)
-			_out = 11;		//beide Körner fallen
+			_out = 11;			//beide Körner fallen
 		if (r >= PROP1 && r<PROP2)
 			_out = 1001;		//rechtes Korn fällt
 		if (r >= PROP2 && r<PROP3)
@@ -302,7 +299,7 @@ inline void App::compute_pattern(int x, int y, int board_in, int board_out)
 	_sand[board_out][x][y + 1] = o2;
 	_sand[board_out][x + 1][y] = o3;
 	_sand[board_out][x + 1][y + 1] = o4;
-}
+} // compute_pattern()
 
 void App::init_pattern()
 {
@@ -314,7 +311,7 @@ void App::init_pattern()
 	p_vec.push_back(Pattern(110, 11));
 	p_vec.push_back(Pattern(1101, 111));
 	p_vec.push_back(Pattern(1110, 1011));
-	//p_vec.push_back(Pattern(1100,11));			//-->Spezialfall
+	//p_vec.push_back(Pattern(1100,11));			// special case
 	p_vec.push_back(Pattern(1020, 21));
 	p_vec.push_back(Pattern(102, 12));
 	p_vec.push_back(Pattern(1120, 1021));
@@ -327,7 +324,7 @@ void App::init_pattern()
 	p_vec.push_back(Pattern(1200, 210));
 	p_vec.push_back(Pattern(2120, 2021));
 	p_vec.push_back(Pattern(1202, 212));
-}
+} // init_pattern()
 
 int App::irand(int a, int b) {
 	double r = b - a + 1;
