@@ -8,5 +8,7 @@ a simulation of falling sand in an hourglass
 a forest fires simulation
 ### LSystem
 Lindemayer-System implementation to grow plants
+### Damenproblem
+eight queens puzzle with dynamic board size implemented with genetic algorithm
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
