@@ -130,6 +130,7 @@ void App::compute()
 	srand(irand(0, 1000));
 	generation = 0;
 	bool solution = false;
+	population.clear();
 	// draw computing information
 	canvas.clear(clan::Colorf(0.0f, 0.0f, 0.0f));
 	std::string text = "computing, please wait...";
@@ -139,7 +140,8 @@ void App::compute()
 	do
 	{
 		int fitnesssum = 0;
-		createPopulation(POPULATION_SIZE);							// create population of given size
+		if(population.size() == 0)
+			createPopulation(POPULATION_SIZE);						// create population of given size
 		evaluatePopulation(fitnesssum);								// evaluate fitness function
 		evolutePopulation(fitnesssum, generation%MUTATION_GENERATION == 0);		// generate children, mutate if needed
 		selectionOfPopulation();
@@ -163,18 +165,18 @@ void App::selectionOfPopulation()
 
 void App::evolutePopulation(int f, bool mutation)
 {
-	// how many pairs have chilrdren?
+	// how many pairs have children?
 	for (int i = 0; i < COPULATIONS_PER_EVOLUTION; ++i)
 	{
-		//mit Roulette 2 Eltern aus Population herausnehmen
+		// find 2 random parents
 		Genom* p1 = GetParent(irand(0, f));
 		f -= p1->fitness;
 		Genom* p2 = GetParent(irand(0, f));
 		f -= p2->fitness;
-		//aus diesen beiden Eltern Kinder zeugen
+		// get children out of this parents
 		copulateParents(p1, p2, mutation);
 	}
-	//nun noch die temporäre Liste mit Eltern und Kinder mit der Liste von kinderlosen Individuumen mergen
+	// merge population with temp child population
 	population.splice(population.end(), temp_population);
 }
 
@@ -182,23 +184,23 @@ void App::copulateParents(Genom* p1, Genom* p2, bool mutation)
 {
 	for (int i = 0; i < CHILDREN; ++i)
 	{
-		//Klon von Parent 1
+		// copy parent 1
 		Genom* child = p1->copy();
-		//über Bitmaske die Elemente von Parent 1 mit denen von Parent 2 austauschen
+		// bitwise random merge two parents
 		for (int j = 0; j < GENOM_SIZE; ++j)
 			if (irand(0, 2) == 0)
 				child->g[j] = p2->g[j];
 		if (mutation)
 		{
-			//ein zufällige Mutation einfügen
+			// add a random mutation
 			child->g[irand(MIN, MAX)] = irand(MIN, MAX);
 		}
-		//Kind bewerten --> Fitnessfunktion
+		// evaluate child
 		evaluateIndividual(child);
-		//jetzt das Kind der neuen Liste hinzufügen
+		// add child to temp population
 		temp_population.push_back(child);
 	}
-	//nun auch die beiden Eltern der neuen Liste hinzufügen
+	// add both parents to temp population
 	temp_population.push_back(p1);
 	temp_population.push_back(p2);
 }
@@ -240,7 +242,7 @@ void App::evaluateIndividual(Genom* o)
 	{
 		for (int j = i + 1; j < GENOM_SIZE; ++j)
 		{
-			//wenn das Damenpaar sich nicht schlägt --> +1 bei Fitness
+			// if queens don't beat --> +1 to fitness
 			if (checkDamen(i, o->g[i], j, o->g[j]))
 				o->fitness++;
 		}
@@ -258,17 +260,16 @@ bool App::checkDamen(int x1, int y1, int x2, int y2)
 	return true;
 }
 
-//erzeuge Population
+// create random population
 void App::createPopulation(int size)
 {
-	population.clear();
 	for (int i = 0; i < size; ++i)
 	{
 		population.push_back(new Genom(irand(MIN, MAX), irand(MIN, MAX), irand(MIN, MAX), irand(MIN, MAX), irand(MIN, MAX), irand(MIN, MAX), irand(MIN, MAX), irand(MIN, MAX)));
 	}
 }
 
-//erzeugt eine Zufallszahl zwischen a und b
+// create a random number between a and b
 int App::irand(int a, int b) 
 {
 	double r = b - a + 1;
