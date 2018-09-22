@@ -10,5 +10,7 @@ a forest fires simulation
 Lindemayer-System implementation to grow plants
 ### Damenproblem
 eight queens puzzle with dynamic board size implemented with genetic algorithm
+### Vier Gewinnt
+artificial intelligence implementation of connect four game
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
