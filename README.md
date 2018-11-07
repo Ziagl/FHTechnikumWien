@@ -12,5 +12,7 @@ Lindemayer-System implementation to grow plants
 eight queens puzzle with dynamic board size implemented with genetic algorithm
 ### Vier Gewinnt
 artificial intelligence implementation of connect four game
+### AStern
+an A* (A star) pathfinding algorithm implemented
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
