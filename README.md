@@ -14,5 +14,7 @@ eight queens puzzle with dynamic board size implemented with genetic algorithm
 artificial intelligence implementation of connect four game
 ### AStern
 an A* (A star) pathfinding algorithm implemented
+### AntColony
+an implementation of ant path finding algorithm (also called ant colony optimization algorithm)
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
