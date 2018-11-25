@@ -16,5 +16,7 @@ artificial intelligence implementation of connect four game
 an A* (A star) pathfinding algorithm implemented
 ### AntColony
 an implementation of ant path finding algorithm (also called ant colony optimization algorithm)
+### eSheep
+a life simulation of sheeps. Each sheep has an individual genome and its actions are based on this.
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib

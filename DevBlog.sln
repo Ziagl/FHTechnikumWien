@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AntColony", "AntColony\AntC
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AStern", "AStern\AStern.vcxproj", "{DD61B8A3-4A50-472E-BE1F-B779C237A9F4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eSheep", "eSheep\eSheep.vcxproj", "{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{DD61B8A3-4A50-472E-BE1F-B779C237A9F4}.Release|x64.Build.0 = Release|x64
 		{DD61B8A3-4A50-472E-BE1F-B779C237A9F4}.Release|x86.ActiveCfg = Release|Win32
 		{DD61B8A3-4A50-472E-BE1F-B779C237A9F4}.Release|x86.Build.0 = Release|Win32
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Debug|x64.ActiveCfg = Debug|x64
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Debug|x64.Build.0 = Debug|x64
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Debug|x86.ActiveCfg = Debug|Win32
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Debug|x86.Build.0 = Debug|Win32
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Release|x64.ActiveCfg = Release|x64
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Release|x64.Build.0 = Release|x64
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Release|x86.ActiveCfg = Release|Win32
+		{72FDE445-6C2C-4D00-AAD1-2B325C6C9855}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
