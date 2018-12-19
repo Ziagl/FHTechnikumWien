@@ -2,21 +2,30 @@
 Source Code for "Game Engineering und Simulation"
 
 ## Projects
-### Sanduhr
+
+### Artificial Intelligence
+
+#### Sanduhr
 a simulation of falling sand in an hourglass
-### Waldbrand
+#### Waldbrand
 a forest fires simulation
-### LSystem
+#### LSystem
 Lindemayer-System implementation to grow plants
 ### Damenproblem
 eight queens puzzle with dynamic board size implemented with genetic algorithm
-### Vier Gewinnt
+#### Vier Gewinnt
 artificial intelligence implementation of connect four game
-### AStern
+#### AStern
 an A* (A star) pathfinding algorithm implemented
-### AntColony
+#### AntColony
 an implementation of ant path finding algorithm (also called ant colony optimization algorithm)
-### eSheep
+#### eSheep
 a life simulation of sheeps. Each sheep has an individual genome and its actions are based on this.
+
+### Physics
+
+### Fireworks
+a simple particle system that simulates fireworks with physics (impulse, gravity, ...)
+
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
