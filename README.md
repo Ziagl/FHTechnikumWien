@@ -24,7 +24,7 @@ a life simulation of sheeps. Each sheep has an individual genome and its actions
 
 ### Physics
 
-### Fireworks
+#### Fireworks
 a simple particle system that simulates fireworks with physics (impulse, gravity, ...)
 
 
