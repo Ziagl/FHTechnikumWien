@@ -26,6 +26,8 @@ a life simulation of sheeps. Each sheep has an individual genome and its actions
 
 #### Fireworks
 a simple particle system that simulates fireworks with physics (impulse, gravity, ...)
+### Gravity
+extends fireworks physics engine with gravity and friction to collide particles with planes
 
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
