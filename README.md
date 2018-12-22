@@ -26,9 +26,9 @@ a life simulation of sheeps. Each sheep has an individual genome and its actions
 
 #### Fireworks
 a simple particle system that simulates fireworks with physics (impulse, gravity, ...)
-### Gravity
+#### Gravity
 extends fireworks physics engine with gravity and friction to collide particles with planes
-### Lunar Lander
+#### Lunar Lander
 simple game/simulation to land on the moon
 
 
