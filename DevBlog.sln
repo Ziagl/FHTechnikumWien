@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConvexHull", "ConvexHull\Co
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mediansuche", "Mediansuche\Mediansuche.vcxproj", "{7FA14844-A55E-4E19-9723-B01443329FB4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kdTree", "kdTree\kdTree.vcxproj", "{519450C5-00CE-4103-8E37-F3D7F295A806}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{7FA14844-A55E-4E19-9723-B01443329FB4}.Release|x64.Build.0 = Release|x64
 		{7FA14844-A55E-4E19-9723-B01443329FB4}.Release|x86.ActiveCfg = Release|Win32
 		{7FA14844-A55E-4E19-9723-B01443329FB4}.Release|x86.Build.0 = Release|Win32
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Debug|x64.ActiveCfg = Debug|x64
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Debug|x64.Build.0 = Debug|x64
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Debug|x86.ActiveCfg = Debug|Win32
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Debug|x86.Build.0 = Debug|Win32
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Release|x64.ActiveCfg = Release|x64
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Release|x64.Build.0 = Release|x64
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Release|x86.ActiveCfg = Release|Win32
+		{519450C5-00CE-4103-8E37-F3D7F295A806}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

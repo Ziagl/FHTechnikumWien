@@ -1,0 +1,12 @@
+﻿main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutInit" in Funktion "main".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutInitDisplayMode" in Funktion "main".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutInitWindowSize" in Funktion "main".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutMainLoop" in Funktion "main".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutCreateWindow" in Funktion "main".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutPostRedisplay" in Funktion ""void __cdecl handleKeypress(unsigned char,int,int)" (?handleKeypress@@YAXEHH@Z)".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutSwapBuffers" in Funktion ""void __cdecl drawScene(void)" (?drawScene@@YAXXZ)".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutDisplayFunc" in Funktion "main".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutReshapeFunc" in Funktion "main".
+main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "glutKeyboardFunc" in Funktion "main".
+C:\Users\Werner\source\glut\glut-3.7.6-bin\glut32.lib : warning LNK4272: Bibliothekcomputertyp "x86" steht in Konflikt mit dem Zielcomputertyp "x64"
+C:\Users\Werner\source\repos\DevBlog\x64\Debug\kdTree.exe : fatal error LNK1120: 10 nicht aufgelöste Externe

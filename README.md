@@ -38,6 +38,8 @@ simple game/simulation to land on the moon
 simple Program to create a convex hull around a number of points in 2D space.
 #### median search
 implementation of different median search algorithms (randomized selection and median by Wirth)
+#### kdTree
+a kdTree implemention with sample program and intersection methods for ray - triangle and ray - kdTree
 
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
