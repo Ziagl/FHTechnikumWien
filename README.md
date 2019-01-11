@@ -41,5 +41,10 @@ implementation of different median search algorithms (randomized selection and m
 #### kdTree
 a kdTree implemention with sample program and intersection methods for ray - triangle and ray - kdTree
 
+### Efficient programming
+
+#### OMP
+a simple Open MP sample program for first Open MP tests with C++ in Visual Studio
+
 
 to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
