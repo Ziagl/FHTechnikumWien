@@ -45,6 +45,9 @@ a kdTree implemention with sample program and intersection methods for ray - tri
 
 #### OMP
 a simple Open MP sample program for first Open MP tests with C++ in Visual Studio
+#### GameOfLife and GameOfLife_OMP
+an implementation of Game of Life and a second version parallelized with Open MP with performance measuremnt
 
 
-to compile this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
+
+to compile most of this projects you need current ClanLib Engine -> https://github.com/sphair/ClanLib
