@@ -11,7 +11,7 @@ a simulation of falling sand in an hourglass
 a forest fires simulation
 #### LSystem
 Lindemayer-System implementation to grow plants
-### Damenproblem
+#### Damenproblem
 eight queens puzzle with dynamic board size implemented with genetic algorithm
 #### Vier Gewinnt
 artificial intelligence implementation of connect four game
